@@ -31,6 +31,8 @@ RUN apt-get update && \
         wget \
         xterm \
         xz-utils && \
+    python3 -m pip install -U pip && \
+    pip3 install pygments jsonmerge && \
     useradd -U -m yoctouser && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
     mkdir -p /opt/build && \
