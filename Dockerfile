@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 # Does prevent interactive questions on apt operations
 ENV DEBIAN_FRONTEND=noninteractive
+ENV WORKSPACE=/opt/build
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -14,6 +15,7 @@ RUN apt-get update && \
         gcc-multilib \
         git-core \
         glib-2.0-dev \
+        gosu \
         iputils-ping \
         libegl1-mesa \
         libsdl1.2-dev \
@@ -33,11 +35,9 @@ RUN apt-get update && \
         xz-utils && \
     python3 -m pip install -U pip && \
     pip3 install pygments jsonmerge && \
-    useradd -U -m yoctouser && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
-    mkdir -p /opt/build && \
     rm -rf /var/lib/apt/lists/*
 
-USER yoctouser
-WORKDIR /opt/build
-CMD /bin/bash
+COPY entrypoint.sh /
+CMD ["/bin/bash"]
+ENTRYPOINT ["/entrypoint.sh"]
