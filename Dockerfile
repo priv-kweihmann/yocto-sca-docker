@@ -11,6 +11,7 @@ RUN apt-get update && \
         cpio \
         debianutils \
         diffstat \
+        file \
         gawk \
         gcc-multilib \
         git-core \
