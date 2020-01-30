@@ -39,6 +39,12 @@ RUN apt-get update && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/*
 
-COPY entrypoint.sh /
-CMD ["/bin/bash"]
-ENTRYPOINT ["/entrypoint.sh"]
+RUN useradd -U -m -s /bin/bash yoctouser && \
+    mkdir -p ${WORKSPACE} && \
+    chown -R yoctouser:yoctouser ${WORKSPACE} && \
+    adduser yoctouser root
+
+USER yoctouser
+
+CMD []
+ENTRYPOINT ["/bin/bash"]
