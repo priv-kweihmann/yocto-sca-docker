@@ -23,5 +23,5 @@ docker run -it -v $(pwd):/opt/build privkweihmann/yocto-sca-minimal:latest
 Instead of `/opt/build` you can define any directory to be used as the workdir - just run
 
 ```shell
-WS=<your path> docker run -it -v $(pwd):$WS --env WORKSPACE=$WS privkweihmann/yocto-sca-minimal:latest
+docker run -it -v $(pwd):/opt/build privkweihmann/yocto-sca-minimal:latest
 ```
