@@ -34,7 +34,7 @@ RUN apt-get update && \
         xterm \
         xz-utils && \
     python3 -m pip install -U pip && \
-    pip3 install pygments jsonmerge && \
+    pip3 install pygments github3.py && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/*
 
