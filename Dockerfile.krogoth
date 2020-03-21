@@ -27,6 +27,7 @@ RUN apt-get update && \
         python3-pexpect \
         python3-pip \
         socat \
+        sudo \
         texinfo \
         unzip \
         wget \
@@ -39,7 +40,9 @@ RUN apt-get update && \
 RUN useradd -U -m -s /bin/bash yoctouser && \
     mkdir -p ${WORKSPACE} && \
     chown -R yoctouser:yoctouser ${WORKSPACE} && \
-    adduser yoctouser root
+    adduser yoctouser root && \
+    adduser yoctouser sudo && \
+    echo 'yoctouser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER yoctouser
 
