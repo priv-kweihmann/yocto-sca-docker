@@ -3,6 +3,8 @@ FROM ubuntu:18.04
 # Does prevent interactive questions on apt operations
 ENV DEBIAN_FRONTEND=noninteractive
 ENV WORKSPACE=/opt/build
+# Set en_US as default lang
+ENV LANG=en_US.UTF-8
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
