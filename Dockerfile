@@ -18,6 +18,7 @@ RUN apt-get update && \
         gcc-multilib \
         git-core \
         glib-2.0-dev \
+        iproute2 \
         iputils-ping \
         libegl1-mesa \
         libsdl1.2-dev \
@@ -30,8 +31,10 @@ RUN apt-get update && \
         python3-pexpect \
         python3-pip \
         socat \
+        ssh \
         sudo \
         texinfo \
+        uml-utilities \
         unzip \
         wget \
         xterm \
