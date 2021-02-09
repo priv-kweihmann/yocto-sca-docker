@@ -20,6 +20,7 @@ RUN apt-get update && \
         glib-2.0-dev \
         iproute2 \
         iputils-ping \
+        jq \
         libegl1-mesa \
         libsdl1.2-dev \
         locales \
