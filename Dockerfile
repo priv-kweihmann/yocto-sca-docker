@@ -27,6 +27,7 @@ RUN apt-get update && \
         pylint3 \
         python \
         python3 \
+        python3-dev \
         python3-git \
         python3-jinja2 \
         python3-pexpect \
@@ -41,7 +42,7 @@ RUN apt-get update && \
         xterm \
         xz-utils && \
     python3 -m pip install -U pip && \
-    pip3 install pygments github3.py && \
+    pip3 install pygments github3.py github3.py python-git oelint-parser scancode-toolkit semantic-version && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/*
 
