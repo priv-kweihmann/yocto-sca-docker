@@ -22,6 +22,7 @@ RUN apt-get update && \
         iputils-ping \
         jq \
         libegl1-mesa \
+        liblz4-tool \
         libsdl1.2-dev \
         locales \
         pylint3 \
@@ -40,7 +41,9 @@ RUN apt-get update && \
         unzip \
         wget \
         xterm \
-        xz-utils && \
+        xz-utils \
+        zstd && \
+    apt remove -y python3-wrapt && \
     python3 -m pip install -U pip && \
     pip3 install pygments github3.py github3.py python-git oelint-parser scancode-toolkit semantic-version && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
