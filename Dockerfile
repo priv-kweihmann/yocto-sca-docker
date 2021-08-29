@@ -45,7 +45,7 @@ RUN apt-get update && \
         zstd && \
     apt remove -y python3-wrapt && \
     python3 -m pip install -U pip && \
-    pip3 install pygments github3.py github3.py python-git oelint-parser scancode-toolkit semantic-version && \
+    pip3 install pygments --upgrade github3.py github3.py python-git oelint-parser scancode-toolkit semantic-version && \
     /usr/sbin/locale-gen en_US.UTF-8 && \
     rm -rf /var/lib/apt/lists/*
 
