@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # Does prevent interactive questions on apt operations
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,20 +18,15 @@ RUN apt-get update && \
         gcc-multilib \
         git-core \
         glib-2.0-dev \
-        iproute2 \
         iputils-ping \
         jq \
         libegl1-mesa \
         liblz4-tool \
         libsdl1.2-dev \
         locales \
-        pylint3 \
-        python \
+        mesa-common-dev \
         python3 \
         python3-dev \
-        python3-git \
-        python3-jinja2 \
-        python3-pexpect \
         python3-pip \
         socat \
         ssh \
@@ -42,14 +37,27 @@ RUN apt-get update && \
         wget \
         xterm \
         xz-utils \
-        zstd && \
-    apt remove -y python3-wrapt && \
+        zstd \
+        && locale-gen ${LANG}
+RUN apt remove -y python3-wrapt && \
     python3 -m pip install -U pip && \
-    pip3 install pygments --upgrade github3.py github3.py python-git oelint-parser scancode-toolkit semantic-version && \
-    /usr/sbin/locale-gen en_US.UTF-8 && \
-    rm -rf /var/lib/apt/lists/*
+    pip3 install --upgrade \
+        github3.py \
+        Jinja2 \
+        oelint-parser \
+        pexpect \
+        pygments \
+        pylint \
+        python-git \
+        python-subunit \
+        scancode-toolkit \
+        semantic-version \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN useradd -U -m -s /bin/bash yoctouser && \
+ENV uid 1001
+ENV gid 1001
+
+RUN useradd -u ${uid} -U -m -s /bin/bash yoctouser && \
     mkdir -p ${WORKSPACE} && \
     chown -R yoctouser:yoctouser ${WORKSPACE} && \
     adduser yoctouser root && \
