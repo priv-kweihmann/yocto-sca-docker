@@ -43,12 +43,12 @@ RUN apt remove -y python3-wrapt && \
     python3 -m pip install -U pip && \
     pip3 install --upgrade \
         github3.py \
+        GitPython \
         Jinja2 \
         oelint-parser \
         pexpect \
         pygments \
         pylint \
-        python-git \
         python-subunit \
         scancode-toolkit \
         semantic-version \
